@@ -1,0 +1,30 @@
+#!/bin/bash
+
+DEPS="\
+    autoconf \
+    automake \
+    bison \
+    build-essential \
+    gawk \
+    libcurl4-openssl-dev \
+    libffi-dev \
+    libgdbm-dev \
+    libmagickwand-dev \
+    libncurses5-dev \
+    libmysqlclient-dev \
+    libreadline6-dev \
+    libsqlite3-dev \
+    libssl-dev \
+    libtool \
+    libxml2-dev \
+    libxslt-dev \
+    libyaml-dev \
+"
+
+
+if [ "x$1" == "xinstall" ] ; then
+    apt-get -y install --no-install-recommends $DEPS
+else
+    apt-get remove --purge $DEPS
+    apt-get remove --purge $(dpkg -l | grep '\-dev\s' | awk '{print $2}')
+fi

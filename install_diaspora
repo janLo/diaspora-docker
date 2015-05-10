@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -e
+
+cd ${HOME}
+
+gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+curl -sSL https://get.rvm.io | bash -s stable
+
+test -s "$HOME/.rvm/scripts/rvm"
+source "$HOME/.rvm/scripts/rvm"
+
+echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"' >> "$HOME/.bashrc"
+
+rvm autolibs read-fail
+rvm install 2.1
+
+git clone -b master git://github.com/diaspora/diaspora.git
+
+cd ${HOME}/diaspora
+gem install bundler
+RAILS_ENV=production  DB=mysql bin/bundle install --without test development
