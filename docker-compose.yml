@@ -1,0 +1,19 @@
+web:
+    build: .
+    links:
+        - db:mariadb
+        - redis:redis
+    ports:
+        - "3000:3000"
+    command: prepare start
+    environment:
+        RAILS_ENV: development
+        DIASPORA_DB_PASSWORD: secret
+        DIASPORA_DB_USER: root
+db:
+    image: mariadb
+    environment:
+        MYSQL_ROOT_PASSWORD: secret
+redis:
+    image: redis
+
