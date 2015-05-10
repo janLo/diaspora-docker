@@ -21,10 +21,12 @@ DEPS="\
     libyaml-dev \
 "
 
+export DEBIAN_FRONTEND=noninteractive
 
 if [ "x$1" == "xinstall" ] ; then
     apt-get -y install --no-install-recommends $DEPS
 else
-    apt-get remove --purge $DEPS
-    apt-get remove --purge $(dpkg -l | grep '\-dev\s' | awk '{print $2}')
+    apt-get -y remove --purge $DEPS
+    apt-get -y remove --purge $(dpkg -l | grep '\-dev\s' | awk '{print $2}')
+#    apt-get -y autoremove --purge
 fi
