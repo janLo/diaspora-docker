@@ -28,5 +28,5 @@ if [ "x$1" == "xinstall" ] ; then
 else
     apt-get -y remove --purge $DEPS
     apt-get -y remove --purge $(dpkg -l | grep '\-dev\s' | awk '{print $2}')
-#    apt-get -y autoremove --purge
+    apt-get -y autoremove --purge
 fi
