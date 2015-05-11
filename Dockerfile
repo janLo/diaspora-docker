@@ -11,12 +11,13 @@ RUN apt-get update && \
 		net-tools \
 		nodejs \
 		sqlite3 \
+		ruby \
 		&& \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN groupadd diaspora && \
-	useradd --uid 1000 --create-home --home-dir /home/user -g diaspora diaspora
+	useradd --uid 1000 --create-home --home-dir /home/diaspora -g diaspora diaspora
 
 WORKDIR /home/diaspora
 
