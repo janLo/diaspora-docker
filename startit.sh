@@ -15,6 +15,10 @@ export DB_USER=${DIASPORA_DB_USER:-root}
 
 cd ${BASE}/diaspora
 
+sed -ri "s/DIASPORA_DB_PASSWORD/$DB_PASSWORD/" config/database.yml
+sed -ri "s/DIASPORA_DB_USER/$DB_USER/" config/database.yml
+sed -ri "s/DIASPORA_DATABASE/$DATABASE/" config/database.yml
+
 # Prepare database
 if [ "x$1" == "xprepare" ]; then
     shift 

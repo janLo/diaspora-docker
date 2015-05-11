@@ -2,8 +2,8 @@ mysql: &mysql
   adapter: mysql2
   host: "mariadb"
   port: 3306
-  username: "root"
-  password: "mysecretpassword"
+  username: "DIASPORA_DB_USER"
+  password: "DIASPORA_DB_PASSWORD"
 #  socket: /tmp/mysql.sock
   encoding: utf8mb4
   collation: utf8mb4_bin
@@ -39,10 +39,10 @@ combined: &combined
   <<: *common
 development:
   <<: *combined
-  database: diaspora_development
+  database: DIASPORA_DATABASE
 production:
   <<: *combined
-  database: diaspora_production
+  database: DIASPORA_DATABASE
 test:
   <<: *combined
   database: "diaspora_test"
