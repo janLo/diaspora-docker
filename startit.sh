@@ -2,7 +2,9 @@
 
 set -e
 
-source "$HOME/.rvm/scripts/rvm"
+BASE=/home/diaspora
+
+source "$BASE/.rvm/scripts/rvm"
 
 export RAILS_ENV=${RAILS_ENV:-development}
 export DB=mysql
@@ -11,7 +13,7 @@ export DATABASE=${DIASPORA_DATABASE:-diaspora_${RAILS_ENV}}
 export DB_PASSWORD=${DIASPORA_DB_PASSWORD:-mysecretpassword}
 export DB_USER=${DIASPORA_DB_USER:-root}
 
-cd ${HOME}/diaspora
+cd ${BASE}/diaspora
 
 # Prepare database
 if [ "x$1" == "xprepare" ]; then
